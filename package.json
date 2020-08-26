@@ -1,15 +1,18 @@
 {
   "name": "frictionless-ckan-mapper-js",
   "scripts": {
+    "build": "webpack",
     "test": "ava test/index.test.js --verbose",
     "test:watch": "ava test/index.test.js --verbose --watch"
   },
   "devDependencies": {
-    "ava": "^3.12.1"
+    "ava": "^3.12.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
   },
   "description": "This is JS version of [Frictionless CKAN Mapper](https://github.com/frictionlessdata/frictionless-ckan-mapper).",
   "version": "0.0.1",
-  "main": "/lib/index.js",
+  "private": true,
   "directories": {
     "test": "test"
   },
