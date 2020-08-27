@@ -1,5 +1,2 @@
-const test = require('ava')
-
-test('empty test', (t) => {
-  t.pass()
-})
+// Test frictionless -> ckan
+require('./frictionless-to-ckan.resource.test')
