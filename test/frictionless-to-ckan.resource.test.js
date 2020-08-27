@@ -7,7 +7,7 @@
  */
 
 const test = require('ava')
-const { frictionlessCkan } = require('../lib')
+const { resourceFrictionlessToCkan } = require('../lib')
 
 test('Non ckan keys passthrough', (t) => {
   const input = {
@@ -24,23 +24,23 @@ test('Non ckan keys passthrough', (t) => {
     location: { country: 'China' },
   }
 
-  t.deepEqual(frictionlessCkan(input), exp)
+  t.deepEqual(resourceFrictionlessToCkan(input), exp)
 })
 
 test('Path to url', (t) => {
   // Test remote path
   let input = { path: 'http://www.somewhere.com/data.csv' }
-  let output = frictionlessCkan(input)
+  let output = resourceFrictionlessToCkan(input)
   test.is(output['url'], input['path'])
 
   // Test local path
   input = { path: './data.csv' }
-  output = frictionlessCkan(input)
+  output = resourceFrictionlessToCkan(input)
   test.is(output['url'], input['path'])
 
   // Test POSIX path
   input = { path: '/home/user/data.csv' }
-  output = frictionlessCkan(input)
+  output = resourceFrictionlessToCkan(input)
   test.is(output['url'], input['path'])
 })
 
@@ -53,7 +53,7 @@ test('Bytes -> size && mediatype -> mimetype', (t) => {
     size: 10,
     mimetype: 'text/csv',
   }
-  test.deepEqual(frictionlessCkan(input), exp)
+  test.deepEqual(resourceFrictionlessToCkan(input), exp)
 })
 
 test('Passthrough', (t) => {
@@ -69,5 +69,5 @@ test('Passthrough', (t) => {
     private: False,
     revision_id: 'xxx',
   }
-  test.deepEqual(frictionlessCkan(input), input)
+  test.deepEqual(resourceFrictionlessToCkan(input), input)
 })
