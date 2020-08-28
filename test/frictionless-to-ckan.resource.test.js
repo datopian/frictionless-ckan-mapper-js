@@ -31,17 +31,17 @@ test('Path to url', (t) => {
   // Test remote path
   let input = { path: 'http://www.somewhere.com/data.csv' }
   let output = resourceFrictionlessToCkan(input)
-  test.is(output['url'], input['path'])
+  t.is(output['url'], input['path'])
 
   // Test local path
   input = { path: './data.csv' }
   output = resourceFrictionlessToCkan(input)
-  test.is(output['url'], input['path'])
+  t.is(output['url'], input['path'])
 
   // Test POSIX path
   input = { path: '/home/user/data.csv' }
   output = resourceFrictionlessToCkan(input)
-  test.is(output['url'], input['path'])
+  t.is(output['url'], input['path'])
 })
 
 test('Bytes -> size && mediatype -> mimetype', (t) => {
@@ -53,7 +53,7 @@ test('Bytes -> size && mediatype -> mimetype', (t) => {
     size: 10,
     mimetype: 'text/csv',
   }
-  test.deepEqual(resourceFrictionlessToCkan(input), exp)
+  t.deepEqual(resourceFrictionlessToCkan(input), exp)
 })
 
 test('Passthrough', (t) => {
@@ -66,8 +66,8 @@ test('Passthrough', (t) => {
     metadata_created: '2020-03-31T21:57:48.676558',
     metadata_modified: '2020-03-31T21:57:50.215642',
     creator_user_id: 'b5ab876c-0d04-479a-92de-f66db5dd6fb3',
-    private: False,
+    private: false,
     revision_id: 'xxx',
   }
-  test.deepEqual(resourceFrictionlessToCkan(input), input)
+  t.deepEqual(resourceFrictionlessToCkan(input), input)
 })
