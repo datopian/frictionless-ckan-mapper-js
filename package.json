@@ -1,7 +1,8 @@
 {
-  "name": "frictionless-ckan-mapper-js",
+  "name": "frictionless-ckan-mapper",
+  "main": "lib/index",
   "scripts": {
-    "build": "webpack",
+    "build": "rm -rf dist/ && webpack",
     "test": "ava test/index.test.js --verbose",
     "test:watch": "ava test/index.test.js --verbose --watch"
   },
