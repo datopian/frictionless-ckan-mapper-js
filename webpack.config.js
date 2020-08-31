@@ -14,10 +14,15 @@ const createConfig = (target) => {
       filename: `frictionless-ckan-mapper.${target}.js`,
       libraryTarget: target,
       library: 'frictionlessCkanMapper',
+      globalObject: `(typeof self !== 'undefined' ? self : this)`,
     },
     module: {
       rules: [
         {
+          use: {
+            loader: 'babel-loader',
+            options: { presets: ['@babel/preset-env'] },
+          },
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
         },
