@@ -8,4 +8,12 @@ A library for mapping CKAN metadata <=> Frictionless metadata.
 
 # Sources
 
-- [Frictionless - Mappings from Other Formats to Frictionless both Profiles and Schemas](https://docs.google.com/spreadsheets/d/1XdqGTFni5Jfs8AMbcbfsP7m11h9mOHS0eDtUZtqGVSg/edit#gid=1925460244)
+[Frictionless - Mappings from Other Formats to Frictionless both Profiles and Schemas](https://docs.google.com/spreadsheets/d/1XdqGTFni5Jfs8AMbcbfsP7m11h9mOHS0eDtUZtqGVSg/edit#gid=1925460244)
+
+## Contributing
+
+Please make sure to read the [CONTRIBUTING.md](/.github/CONTRIBUTING.md) Guide before making a pull request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](License) file for details
