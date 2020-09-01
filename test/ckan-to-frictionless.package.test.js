@@ -104,7 +104,7 @@ test('dataset license with licenses in extras', async (t) => {
     extras: [
       {
         key: 'licenses',
-        value: json.dumps([
+        value: JSON.stringify([
           {
             name: 'cc-by',
             title: 'Creative Commons Attribution',
@@ -330,7 +330,7 @@ test('null values are stripped', async (t) => {
   const input = {
     id: '12312',
     title: 'title here',
-    format: None,
+    format: null,
   }
 
   const expect = {
