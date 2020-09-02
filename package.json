@@ -15,7 +15,7 @@
     "webpack-cli": "^3.3.12"
   },
   "description": "This is JS version of [Frictionless CKAN Mapper](https://github.com/frictionlessdata/frictionless-ckan-mapper).",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "private": false,
   "directories": {
     "test": "test"
