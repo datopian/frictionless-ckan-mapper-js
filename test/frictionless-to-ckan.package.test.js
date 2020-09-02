@@ -103,7 +103,7 @@ test('Dataset license', (t) => {
       extras: [
         {
           key: 'licenses',
-          value: [
+          value: JSON.stringify([
             {
               title: 'Open Data Commons Open Database License',
               name: 'odc-pddl',
@@ -112,7 +112,7 @@ test('Dataset license', (t) => {
               title: 'Creative Commons CC Zero License (cc-zero)',
               name: 'cc-zero',
             },
-          ],
+          ]),
         },
       ],
     },
@@ -169,6 +169,7 @@ test('Contributors', (t) => {
 
   let exps = [
     {
+      author_email: undefined,
       author: 'John Smith',
     },
     {
@@ -189,11 +190,7 @@ test('Contributors', (t) => {
       extras: [
         {
           key: 'contributors',
-          value: [
-            { role: 'author', email: '', title: 'Patricio' },
-            { role: 'maintainer', email: '', title: 'Rufus' },
-            { role: 'author', email: '', title: 'Paul' },
-          ],
+          value: JSON.stringify(inputs[3].contributors),
         },
       ],
     },
@@ -232,11 +229,11 @@ test('Extras is converted', (t) => {
     extras: [
       {
         key: 'newdict',
-        value: { key1: 'dict_to_jsonify' },
+        value: JSON.stringify(input.newdict),
       },
       { key: 'newint', value: 123 },
       { key: 'newkey', value: 'new value' },
-      { key: 'newlist', value: [1, 2, 3, 'string'] },
+      { key: 'newlist', value: JSON.stringify(input.newlist) },
     ],
   }
 
