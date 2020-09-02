@@ -21,7 +21,7 @@ If you use AMD, UMD, Commonjs or just need the script in browser then install vi
 In **Node**
 
 ```js
-const frictionlessCkanMapper = require('frictionless-ckan-mapper')
+const frictionlessCkanMapper = require('frictionless-ckan-mapper-js')
 ```
 
 In **Browser**
@@ -56,12 +56,14 @@ const ckanResource = frictionlessCkanMapper.resourceFrictionlessToCkan(
 )
 
 console.log(ckanResource)
-// {
-//   name: 'data.csv',
-//   url: 'http://someplace.com/data.csv',
-//   size: 100,
-//   mimetype: 'text/csv'
-// }
+/*
+{
+  name: 'data.csv',
+  url: 'http://someplace.com/data.csv',
+  size: 100,
+  mimetype: 'text/csv'
+}
+*/
 ```
 
 Converting frictionless package spec to ckan package spec
@@ -89,24 +91,98 @@ const ckanPackage = frictionlessCkanMapper.packageFrictionlessToCkan(
 )
 
 console.log(ckanPackage)
-// {
-//     name: 'gdp',
-//     notes: 'Country, regional and world GDP in current USD.',
-//     url: 'https://datopian.com',
-//     title: 'Countries GDP',
-//     version: '1.0',
-//     extras: [
-//       { key: 'newdict', value: [Object] },
-//       { key: 'newint', value: 123 }
-//     ],
-//     resources: [
-//       {
-//         name: 'data.csv',
-//         url: 'http://someplace.com/data.csv',
-//         size: 100
-//       }
-//     ]
-//   }
+/*
+{
+    name: 'gdp',
+    notes: 'Country, regional and world GDP in current USD.',
+    url: 'https://datopian.com',
+    title: 'Countries GDP',
+    version: '1.0',
+    extras: [
+      { key: 'newdict', value: [Object] },
+      { key: 'newint', value: 123 }
+    ],
+    resources: [
+      {
+        name: 'data.csv',
+        url: 'http://someplace.com/data.csv',
+        size: 100
+      }
+    ]
+  }
+*/
+```
+
+Converting ckan package spec to frictionless package spec
+
+```js
+const ckanPackage = {
+  name: 'gdp',
+  notes: 'Country, regional and world GDP in current USD.',
+  url: 'https://datopian.com',
+  title: 'Countries GDP',
+  version: '1.0',
+  extras: [
+    { key: 'newdict', value: [Object] },
+    { key: 'newint', value: 123 },
+  ],
+  resources: [
+    {
+      name: 'data.csv',
+      url: 'http://someplace.com/data.csv',
+      size: 100,
+    },
+  ],
+}
+
+const frictionlessPackage = frictionlessCkanMapper.packageCkanToFrictionless(
+  ckanPackage
+)
+
+console.log(frictionlessPackage)
+/*
+{
+  name: 'gdp',
+  description: 'Country, regional and world GDP in current USD.',
+  homepage: 'https://datopian.com',
+  title: 'Countries GDP',
+  version: '1.0',
+  newdict: [ [Function: Object] ],
+  newint: 123,
+  resources: [
+    {
+      name: 'data.csv',
+      path: 'http://someplace.com/data.csv',
+      bytes: 100
+    }
+  ]
+}
+*/
+```
+
+Converting ckan resource spec to frictionless resource spec
+
+```js
+const ckanResource = {
+  name: 'data.csv',
+  url: 'http://someplace.com/data.csv',
+  size: 100,
+  mimetype: 'text/csv',
+}
+
+const frictionlessResource = frictionlessCkanMapper.resourceCkanToFrictionless(
+  ckanResource
+)
+
+console.log(frictionlessResource)
+/*
+{
+  name: 'data.csv',
+  path: 'http://someplace.com/data.csv',
+  bytes: 100,
+  mediatype: 'text/csv'
+}
+*/
 ```
 
 ## Sources
