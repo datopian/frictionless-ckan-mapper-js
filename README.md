@@ -21,7 +21,7 @@ If you use AMD, UMD, Commonjs or just need the script in browser then install vi
 In **Node**
 
 ```js
-const frictionlessCkanMapper = require('frictionless-ckan-mapper-js')
+const mapper = require('frictionless-ckan-mapper-js')
 ```
 
 In **Browser**
@@ -41,21 +41,19 @@ In **Browser**
 
 ## Examples
 
-Converting frictionless resource spec to ckan package spec
+Converting frictionless dataset spec to ckan package spec
 
 ```js
-const frictionlessResource = {
+const frictionlessDataset = {
   name: 'data.csv',
   path: 'http://someplace.com/data.csv',
   bytes: 100,
   mediatype: 'text/csv',
 }
 
-const ckanResource = frictionlessCkanMapper.resourceFrictionlessToCkan(
-  frictionlessResource
-)
+const ckanDataset = mapper.resourceFrictionlessToCkan(frictionlessDataset)
 
-console.log(ckanResource)
+console.log(ckanDataset)
 /*
 {
   name: 'data.csv',
@@ -86,9 +84,7 @@ const frictionlessPackage = {
   ],
 }
 
-const ckanPackage = frictionlessCkanMapper.packageFrictionlessToCkan(
-  frictionlessPackage
-)
+const ckanPackage = mapper.packageFrictionlessToCkan(frictionlessPackage)
 
 console.log(ckanPackage)
 /*
@@ -135,9 +131,7 @@ const ckanPackage = {
   ],
 }
 
-const frictionlessPackage = frictionlessCkanMapper.packageCkanToFrictionless(
-  ckanPackage
-)
+const frictionlessPackage = mapper.packageCkanToFrictionless(ckanPackage)
 
 console.log(frictionlessPackage)
 /*
@@ -160,21 +154,19 @@ console.log(frictionlessPackage)
 */
 ```
 
-Converting ckan resource spec to frictionless resource spec
+Converting ckan dataset spec to frictionless dataset spec
 
 ```js
-const ckanResource = {
+const ckanDataset = {
   name: 'data.csv',
   url: 'http://someplace.com/data.csv',
   size: 100,
   mimetype: 'text/csv',
 }
 
-const frictionlessResource = frictionlessCkanMapper.resourceCkanToFrictionless(
-  ckanResource
-)
+const frictionlessDataset = mapper.resourceCkanToFrictionless(ckanDataset)
 
-console.log(frictionlessResource)
+console.log(frictionlessDataset)
 /*
 {
   name: 'data.csv',
